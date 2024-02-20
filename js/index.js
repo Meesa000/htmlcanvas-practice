@@ -26,15 +26,18 @@ window.addEventListener('keydown', (event) => {
 
     switch(event.key){
         case 'w':
-            if (player.velocity.y == 0){
-                player.velocity.y = -10;
-                break;
-            }
-        
+            if (player.velocity.y == 0)
+                player.velocity.y = -20;
+            break
+
         case 'a':
-            player.velocity.x = -10;    
-            break;
-            
+            break
+
+        case 'd':
+            player.velocity.x = 4
+            break
+
+
     }
 
 })
