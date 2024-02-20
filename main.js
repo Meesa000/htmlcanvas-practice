@@ -1,8 +1,25 @@
 const canvas = document.getElementById('mainCanvas');
 const ctx = canvas.getContext('2d');
-let width = canvas.width = 1024;
-let height = canvas.height = 576;
+canvas.width = 1024;
+canvas.height = 576;
 
-ctx.fillStyle = 'green';
-ctx.fillRect(10,10,width,height);
+let x = 100;
+let y = 100;
 
+function animate() {
+    window.requestAnimationFrame(animate);
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle = 'green ';
+    ctx.fillRect(x,y,100,100);
+    if (y == canvas.height - 100 ){
+        y = canvas.height - 100;
+    }
+    else{
+        y++;
+    }
+    
+
+}
+
+animate();
