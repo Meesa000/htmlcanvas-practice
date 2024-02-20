@@ -6,7 +6,6 @@ canvas.height = 576;
 
 const player = new Player();
 
-// let bottom = y + playerHeight;
 
 function animate() {
     window.requestAnimationFrame(animate);
@@ -21,3 +20,21 @@ function animate() {
 }
 
 animate();
+
+// player controls
+window.addEventListener('keydown', (event) => {
+
+    switch(event.key){
+        case 'w':
+            if (player.velocity.y == 0){
+                player.velocity.y = -10;
+                break;
+            }
+        
+        case 'a':
+            player.velocity.x = -10;    
+            break;
+            
+    }
+
+})
