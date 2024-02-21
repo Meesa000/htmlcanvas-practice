@@ -1,8 +1,8 @@
 class Player {
     constructor(){
         this.position = {
-            x: 100,
-            y: 100,
+            x: 0,
+            y: 400,
         }
         
         this.velocity =  {
@@ -20,6 +20,7 @@ class Player {
 
         this.sides = {
             bottom:this.position.y + this.height,
+            side:this.position.x + this.width
             
 
             
@@ -33,8 +34,9 @@ class Player {
     }
 
     update(){
-        // update y axis
+       
         this.position.x += this.velocity.x;
+        this.sides.side = this.position.x + this.width;
         this.position.y += this.velocity.y;
         this.sides.bottom = this.position.y + this.height;
 
@@ -44,6 +46,16 @@ class Player {
         }
         else {
             this.velocity.y = 0;
+        }
+
+        
+
+        if (this.sides.side + this.velocity.x < canvas.width) {
+            this.velocity.x;
+           
+        } 
+        else {
+            this.velocity.x = 0;
         }
     }
 }   
