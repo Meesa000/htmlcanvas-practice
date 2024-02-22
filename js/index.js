@@ -4,60 +4,59 @@ canvas.width = 1024;
 canvas.height = 576;
 
 
+
+const backgroundLevel1 = new Sprite({
+    position: {
+        x: 0,
+        y: 0
+    },
+    imageSrc: '/assets/img/backgroundLevel1.png'
+})
+
 const player = new Player();
+
+// controls
+const keys = {
+    w: {
+        pressed: false
+    },
+    a: {
+        pressed: false
+    },
+    s: {
+        pressed: false
+    },
+    d: {
+        pressed: false
+    },
+}
 
 
 function animate() {
     window.requestAnimationFrame(animate);
-    ctx.fillStyle = 'white';
-    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    // draw lvl 1 background
+    backgroundLevel1.draw();
+    
+    // set velocity x after every frame 
+    player.velocity.x = 0;
+
+    // conditionals for movement left and right
+    
+    if (keys.d.pressed) player.velocity.x = 4;
+    else if (keys.a.pressed) player.velocity.x = -4;
+    
    
     player.draw();
     player.update();
+
+    // player controls
+
 
    
 
 }
 
+
 animate();
 
-// player controls
-window.addEventListener('keydown', (event) => {
-
-    switch(event.key){
-
-        case 'w':
-            if (player.velocity.y == 0)
-                player.velocity.y = -20;
-            break
-
-        case 'a':
-            // move to left
-             player.velocity.x = -4
-             break
-
-        case 'd':
-            // move to right
-            player.velocity.x = 4
-            break
-
-    }
-
-
-})
-// key release event for left and right
-window.addEventListener('keyup', (event) => {
-
-    switch(event.key) {
-
-        case 'a':
-            player.velocity.x = 0;
-            break
-        case 'd':
-            player.velocity.x = 0;
-            break
-    }
-
-    
-       
-})

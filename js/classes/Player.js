@@ -11,6 +11,13 @@ class Player {
 
         }
 
+        this.physics = {
+            bounceRight: 5,
+            bounceLeft: -5
+
+
+        }
+
         this.gravity = 1
 
         
@@ -34,9 +41,10 @@ class Player {
     }
 
     update(){
-       
+       // x axis
         this.position.x += this.velocity.x;
         this.sides.side = this.position.x + this.width;
+        // y axis
         this.position.y += this.velocity.y;
         this.sides.bottom = this.position.y + this.height;
 
@@ -49,13 +57,13 @@ class Player {
         }
 
         
-
-        if (this.sides.side + this.velocity.x < canvas.width) {
-            this.velocity.x;
+        
+        if (this.sides.side > canvas.width) {
+            this.velocity.x = 0;
+            this.position.x = canvas.width - this.width; // Set position to right edge of canvas
+            
            
         } 
-        else {
-            this.velocity.x = 0;
-        }
+        
     }
 }   
