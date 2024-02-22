@@ -5,6 +5,9 @@ canvas.height = 576;
 
 
 
+const parsedCollisions = collisionsLevel1.parse2D();
+const collisionBlocks = parsedCollisions.createObjectsFrom2D();
+
 const backgroundLevel1 = new Sprite({
     position: {
         x: 0,
@@ -37,7 +40,10 @@ function animate() {
 
     // draw lvl 1 background
     backgroundLevel1.draw();
-    
+    collisionBlocks.forEach(collisionBlock => {
+        collisionBlock.draw();
+
+    })
     // set velocity x after every frame 
     player.velocity.x = 0;
 
